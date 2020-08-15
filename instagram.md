@@ -3,13 +3,28 @@
     * Able to upload photos
     * Able to Follow other users
     * Able to view timeline (recent activies from the people user is following) 
-Capacity Estimations
+## Capacity Estimations
     1. number of users z
     1. number of uploads 10 per user per day (10*Z)
     2. number of read 25 per user per day (25*z) 
 
-Number of MicroServices:
-    1. Upload Service   (token, blob, meta_data) 
+## Number of MicroServices:
+### user Service:
+   * Create User  POST /users/   
+        {
+           userName: "", 
+           password: "", 
+           metaData: 
+              " email: " 
+              " created_time: " 
+              " dob: "
+        } 
+        Returns 201 with User Object including id 
+   * Read User    GET/users/{id} 
+       {
+       } 
+      
+    Upload Service   (token, blob, meta_data) 
           meta_data = time, location, thumbnail, 
     2. Read Service (token, photoes older than) 
                     (token, object_id, object_type, shared_with = List<user_ids>)
