@@ -1,8 +1,8 @@
-Functional Requirements:
-    *  Able to create user acccount
-    1. Able to upload photos
-    2. Able to Follow other users
-    3. Able to view timeline (recent activies from the people user is following) 
+## Functional Requirements:
+    * Able to create user acccount
+    * Able to upload photos
+    * Able to Follow other users
+    * Able to view timeline (recent activies from the people user is following) 
 Capacity Estimations
     1. number of users z
     1. number of uploads 10 per user per day (10*Z)
