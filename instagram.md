@@ -1,12 +1,12 @@
 
 ### user Service:
    #### Create/Signup For an account
-      * Browser first establishes the SSL connection 
-      * POST /users/
-          form data: username, password, metadata
-      * Response is http = 201 with the user object. 
-   ~~~
-       User{
+   * Browser first establishes the SSL connection 
+   * POST /users/
+       form data: User Object
+   * Response is http = 201 with the user object. 
+      ~~~
+         User{
            id: "",
            userName: "", 
            password: "", 
@@ -15,7 +15,7 @@
               " created_time: " 
               " dob: "
         }
-   ~~~   
+      ~~~   
    Within a service we have, APP SERVER --> CACHE SERVER --> STORAGE SERVER. 
   * Storage is Row based key-value distributed store. Sharded by User_id. 
        Each Row Size is : 2KB thumbnail, 1kb of other data = 3KB 
