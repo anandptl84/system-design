@@ -10,29 +10,46 @@
 
 ## Number of MicroServices:
 ### user Service:
-   * Create User  POST /users/   
-        {
+   #### Create/Signup For an account
+      * Browser first establishes the SSL connection 
+      * POST /users/
+          form data: username, password, metadata
+      * Response is http = 201 with the user object. 
+   ~~~
+       User{
+           id: "",
            userName: "", 
            password: "", 
            metaData: 
               " email: " 
               " created_time: " 
               " dob: "
-        } 
-        Returns 201 with User Object including id 
-   * Read User    GET/users/{id} 
-       {
-       } 
-      
-    Upload Service   (token, blob, meta_data) 
-          meta_data = time, location, thumbnail, 
-    2. Read Service (token, photoes older than) 
-                    (token, object_id, object_type, shared_with = List<user_ids>)
-                    
-
-Upload Service:
-    1. appserver --> backend row based (k,v) store. 
-    row based distributed store.  shard_by = user_id, time
- 
-Read Service:
-    1. appserver --> cache_
+        }
+   ~~~   
+   Within a service we have, APP SERVER --> CACHE SERVER --> STORAGE SERVER. 
+  * Storage is Row based key-value distributed store. Sharded by User_id. 
+       Each Row Size is : 2KB thumbnail, 1kb of other data = 3KB 
+       Total Size for 1 billion users: 1B * 3KB == 3TB. 
+       Logical View: UserId, user_profile, user_hash (User Hash is the secondary index) 
+   #### Login Request
+      *  Browser first establish a SSL connection. 
+      *  GET http://username:password@domain.com/users/
+      *  Response is the SESSION_ID
+   App Server creates a hash out of (username, password) and verify that against DB using secondary index. 
+   If valid user entry exists, it creates an Session Key using Session Service. 
+   
+### Session Service:
+   #### Create Session
+      * POST /session/
+      Session Object:
+          ~~~{
+               user_id: "",
+           }~~~
+   Thin APP layer with write around cache, creates a random SESSION_KEY and simply writes to distributed key_value_store. 
+   #### Get Session
+      * GET /session/${session_id}
+           ~~~{
+               user_id: "",
+               session_creation_time: "",
+            }~~~
+   APP Layer, mostly takes care of write around cache part.. Reads from Cache if not available, reads from DB and populates it back. 
