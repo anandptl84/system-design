@@ -53,3 +53,7 @@
                session_creation_time: "",
             }~~~
    APP Layer, mostly takes care of write around cache part.. Reads from Cache if not available, reads from DB and populates it back. 
+   
+ Questions: 
+    * How do you send login/password information back to users. 
+    * Defining the REST objects and request/response on of the same partial REST object.
