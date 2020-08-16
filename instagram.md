@@ -1,14 +1,4 @@
-## Functional Requirements:
-    * Able to create user acccount
-    * Able to upload photos
-    * Able to Follow other users
-    * Able to view timeline (recent activies from the people user is following) 
-## Capacity Estimations
-    1. number of users z
-    1. number of uploads 10 per user per day (10*Z)
-    2. number of read 25 per user per day (25*z) 
 
-## Number of MicroServices:
 ### user Service:
    #### Create/Signup For an account
       * Browser first establishes the SSL connection 
