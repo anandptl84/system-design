@@ -45,5 +45,6 @@
    APP Layer, mostly takes care of write around cache part.. Reads from Cache if not available, reads from DB and populates it back. 
    
  Questions: 
-    * How do you send login/password information back to users. 
-    * Defining the REST objects and request/response on of the same partial REST object.
+ * How do you send login/password information back to users. 
+ * How does secondary indexes work in distributed datastores?
+ * Defining the REST objects and request/response on of the same partial REST object.
