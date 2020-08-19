@@ -3,7 +3,7 @@
    #### Create/Signup For an account
    * Browser first establishes the SSL connection 
    * POST /users/
-       form data: User Object
+   User Object
    * Response is http = 201 with the user object. 
       ~~~
          User{
