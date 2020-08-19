@@ -48,6 +48,6 @@
  * How do you send login/password information to server? Is Password encoded on client side or we mostly rely on the SSL level encryption ? 
  * Is it ok to send Session object back on the REST API ? 
  * With Key/Value access being the main pattern, how do you support secondary use-case in CP system? How does secondary indexes work in distributed datastores? My understanding is that in order to user it, you still need the shard key first as it only works at the Node Level?
- * Is 3TB small enough to store the data into RDMS? We can create a secondary hash index on RDMS easily. 
+ * Is 3TB small enough to store the data into RDMS? How does secondary hash index on RDMS works on 3TB size?
  * Defining the REST objects and request/response on of the same partial REST object.
  
